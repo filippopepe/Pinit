@@ -164,9 +164,7 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigat
             self.imagePosition.clipsToBounds=true
             self.dismiss(animated:true, completion: nil)
             self.location.image = UIImageJPEGRepresentation(chosenImage, 0.8)
-            appDelegate?.saveContext()
-            print("Ktm1")
- 
+            appDelegate?.saveContext() 
     }
     
     
