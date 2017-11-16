@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ApplicationW2_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <map width="156" height="89" alignment="left" id="zZB-Aa-Tq7">
+                            <variation key="device=watch38mm" height="74"/>
+                        </map>
+                        <group width="154" height="38" alignment="left" id="PT7-xD-4uF">
+                            <items>
+                                <button width="37" height="66" alignment="left" title="☕️" id="Woa-Sa-ZDx">
+                                    <variation key="device=watch38mm" height="33" width="32"/>
+                                    <connections>
+                                        <action selector="First" destination="AgC-eL-Hgc" id="qfB-5O-pbz"/>
+                                    </connections>
+                                </button>
+                                <button width="37" height="66" alignment="left" title="🛍" id="ph4-8h-mtN">
+                                    <variation key="device=watch38mm" height="33" width="32"/>
+                                    <connections>
+                                        <action selector="Second" destination="AgC-eL-Hgc" id="BH6-yr-Ml9"/>
+                                    </connections>
+                                </button>
+                                <button width="37" height="66" alignment="left" title="🌄" id="WrP-78-hMQ">
+                                    <variation key="device=watch38mm" height="33" width="32"/>
+                                    <connections>
+                                        <action selector="Third" destination="AgC-eL-Hgc" id="lmn-uF-RQw"/>
+                                    </connections>
+                                </button>
+                                <button width="37" height="66" alignment="left" title="🗽" id="cKp-8f-pzJ">
+                                    <variation key="device=watch38mm" height="33" width="32"/>
+                                    <connections>
+                                        <action selector="Fourth" destination="AgC-eL-Hgc" id="LzN-qF-Ndi"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <variation key="device=watch38mm" height="34"/>
+                        </group>
+                        <button width="156" height="37" alignment="left" backgroundImage="AddPositionWatch" id="My4-KC-ofx">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <variation key="device=watch38mm" height="33"/>
+                            <connections>
+                                <action selector="saveLocationAction" destination="AgC-eL-Hgc" id="CJs-wg-CfH"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="fist" destination="Woa-Sa-ZDx" id="Ejw-5z-Zox"/>
+                        <outlet property="fourth" destination="cKp-8f-pzJ" id="x4e-CH-kzT"/>
+                        <outlet property="mapView" destination="zZB-Aa-Tq7" id="A0S-ow-nZv"/>
+                        <outlet property="save" destination="My4-KC-ofx" id="fwa-SR-Baa"/>
+                        <outlet property="second" destination="ph4-8h-mtN" id="RVY-VM-fHB"/>
+                        <outlet property="third" destination="WrP-78-hMQ" id="djW-Su-vTD"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="218" y="327"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="ApplicationW2_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
