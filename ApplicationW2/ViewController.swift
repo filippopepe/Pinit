@@ -17,16 +17,12 @@ class ViewController: UIViewController {
         if launchedBefore{
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timeToMoveOn), userInfo: nil, repeats: false)
         }else {
-            print("A puttan ra mamm ro segue")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             OperationQueue.main.addOperation {
                 [weak self] in
                 self?.performSegue(withIdentifier: "segueTutorial", sender: self)
             }
-            print("Qua ci sono arrivato")
-            
         }
-      
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +33,4 @@ class ViewController: UIViewController {
     func timeToMoveOn(){
         self.performSegue(withIdentifier: "seguePrincipale", sender: nil)
     }
-    
-    
 }
-

@@ -14,20 +14,13 @@ import MobileCoreServices
 class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate {
     
     @IBOutlet weak var mappa: MKMapView!
-  
-    
     @IBOutlet weak var namePosition: UITextField!
-    
     @IBOutlet weak var typePosition: UITextField!
     @IBOutlet weak var imagePosition: UIImageView!
     var newPick:Bool?
     var imagePicker: UIImagePickerController! = UIImagePickerController() //Picker per aprire fotocamera
-
     var location:LocationMO!
-    //var locations: [LocationMO] = []
-
     var before:String = ""
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +48,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigat
     let manager = CLLocationManager()
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations  locations: [CLLocation]){
-        
         let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.lat, location.long)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
@@ -65,7 +57,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigat
         annotation.coordinate = myLocation
         mappa.addAnnotation(annotation)
         self.mappa.showsUserLocation = true
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,8 +115,6 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigat
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             appDelegate.saveContext()
         }
-        
-    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -137,21 +126,17 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigat
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             appDelegate.saveContext()
         }
-        
         return true
     }
 
 
     @IBAction func photoFromLibrary(_ sender: Any) {
-        
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-        
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)
-            
-    }
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(imagePicker, animated: true, completion: nil)
+        }
 }
     //MARK: - Delegates
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : AnyObject])
@@ -169,8 +154,3 @@ class DetailViewController: UIViewController,CLLocationManagerDelegate,UINavigat
     
     
 }
-
-
-
-
-

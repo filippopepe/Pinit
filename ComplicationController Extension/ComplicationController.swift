@@ -50,25 +50,17 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        
-        
-               if complication.family == .utilitarianSmall {
-    
-                  let te = CLKComplicationTemplateUtilitarianSmallRingImage()
-                  te.imageProvider=CLKImageProvider(onePieceImage: UIImage(named: "Group Copy 2.png")!)
-                handler(te)
-                }
-        
+        if complication.family == .utilitarianSmall {
+            let te = CLKComplicationTemplateUtilitarianSmallRingImage()
+            te.imageProvider=CLKImageProvider(onePieceImage: UIImage(named: "Group Copy 2.png")!)
+            handler(te)
+        }
         if complication.family == .circularSmall {
-            
             let te = CLKComplicationTemplateCircularSmallSimpleImage( )
             te.imageProvider=CLKImageProvider(onePieceImage: UIImage(named: "Group Copy 2.png")!)
             handler(te)
         }
-        
-        
         // This method will be called once per supported complication, and the results will be cached
         handler(nil)
     }
-    
 }

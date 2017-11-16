@@ -31,13 +31,10 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
     private var priorityList:[String] = ["☕️"," 🛍","🌄","🗽"] //Array di stringhe per il tipo della posizione
     private var selectedProp: [Bool] = [false,false,false,false]
     private var selectedPic = false
-    
     let manager = CLLocationManager()
-    
     var imagePicker1: UIImagePickerController! = UIImagePickerController() //Picker per aprire fotocamera
     var location:LocationMO!
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tabbarconroller?.tabbar.isHidden = true;
@@ -53,7 +50,6 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
         image1.layer.cornerRadius = image1.frame.height / 2
         image1.clipsToBounds = true
         image1.image = UIImage(named: "fotoDefault")
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,10 +65,9 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map1.setRegion(region, animated: true)
         self.map1.showsUserLocation = true
-        }
-
-/* Azione implementato dal bottone per inserire la foto . Richiama l'imagepicker. Come risorsa tale imagepicker utilizzerà la camera dell'iphone*/
-  
+    }
+    
+    /* Azione implementato dal bottone per inserire la foto . Richiama l'imagepicker. Come risorsa tale imagepicker utilizzerà la camera dell'iphone*/
     @IBAction func TakeImage1(_ sender: Any) {
         imagePicker1.allowsEditing = true
         imagePicker1.sourceType = .camera
@@ -80,20 +75,13 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
     }
  
     /*  Funzione che consente all'utente di poter scattare foto utilizzando fotocamera iPhone */
-
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-      
             image1.contentMode = .scaleAspectFit //Gli faccio mantenere la scala per non farla sgranare
-            
             image1.image = pickedImage //Assegno la foto selezionata
-  
             image1.clipsToBounds = true
             self.selectedPic = true
-
             dismiss(animated: true, completion: nil)
-
-            
             /* Salvataggio foto selezionata
             UIImageWriteToSavedPhotosAlbum(pickedImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil) //Salva in libreria la foto scattata
                 */
@@ -121,32 +109,32 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
             present(ac, animated: true)
     } }*/
 
-        @IBAction func SavePosition(_ sender: Any) {
-            let lat = manager.location?.coordinate.latitude
-            let long = manager.location?.coordinate.longitude
-            let img:UIImage = image1.image!
+    @IBAction func SavePosition(_ sender: Any) {
+        let lat = manager.location?.coordinate.latitude
+        let long = manager.location?.coordinate.longitude
+        let img:UIImage = image1.image!
         
        /* CODIFICA FOTO IN FORMATO NSDATA */
-            let imageData:NSData = UIImageJPEGRepresentation(img, 0.8)! as NSData
+        let imageData:NSData = UIImageJPEGRepresentation(img, 0.8)! as NSData
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate){
+            /*SALVATAGGIO DEGLI ELEMENTI NEL DATABASE. VIENE DEFINITA UNA VARIABILE DI TIPO ENTITA' DEL DB (LocatioMO) e
+             i dati vengono inseriti nei rispettivi campi */
             
-            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate){
-    /*SALVATAGGIO DEGLI ELEMENTI NEL DATABASE. VIENE DEFINITA UNA VARIABILE DI TIPO ENTITA' DEL DB (LocatioMO) e i dati vengono inseriti nei rispettivi campi */
-            
-                location = LocationMO(context: appDelegate.persistentContainer.viewContext)
-                if namePosition.text != "" {
-                    location.name = namePosition.text
-                } else {
-                    location.name = "Position \(n)"
-                    n = n + 1
-                }
-                
-                location.type = p != -1 ? priorityList[p] : "🀺🀲🀳"
-                location.lat = lat!
-                location.long = long!
-                location.image = (self.selectedPic) ? imageData as Data : UIImageJPEGRepresentation(#imageLiteral(resourceName: "defaultPic"), 0.8)! as Data 
-                print("Salvataggio Dati ....")
-                appDelegate.saveContext()
-                print("* * * * * * SALVATO * * * * * * \n\n")
+            location = LocationMO(context: appDelegate.persistentContainer.viewContext)
+            if namePosition.text != "" {
+                location.name = namePosition.text
+            } else {
+                location.name = "Position \(n)"
+                n = n + 1
+            }
+            location.type = p != -1 ? priorityList[p] : "🀺🀲🀳"
+            location.lat = lat!
+            location.long = long!
+            location.image = (self.selectedPic) ? imageData as Data : UIImageJPEGRepresentation(#imageLiteral(resourceName: "defaultPic"), 0.8)! as Data
+            print("Salvataggio Dati ....")
+            appDelegate.saveContext()
+            print("* * * * * * SALVATO * * * * * * \n\n")
         }
     }
     
@@ -188,7 +176,6 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
         emoji2.isHighlighted = true
         emoji3.isHighlighted = false
         emoji4.isHighlighted = false
-        
         if !self.selectedProp[1] {
             self.selectedProp[0] = false
             self.selectedProp[1] = true
@@ -234,7 +221,6 @@ class NewPositionViewController: UIViewController,CLLocationManagerDelegate,UIIm
         emoji2.isHighlighted = false
         emoji3.isHighlighted = false
         emoji4.isHighlighted = true
-        
         if !self.selectedProp[3] {
             self.selectedProp[0] = false
             self.selectedProp[1] = false

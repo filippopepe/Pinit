@@ -15,17 +15,13 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
     var location:LocationMO!
     var lastFoundLocation: CLLocation?
     var session: WCSession?
-    
-    @IBAction func Save(_ sender: Any) {
-        performSegue(withIdentifier: "segueNewPosition", sender: nil)
-
-        
-    }
-    
-    
     @IBOutlet weak var map: MKMapView!
     let manager = CLLocationManager()
     
+    @IBAction func Save(_ sender: Any) {
+        performSegue(withIdentifier: "segueNewPosition", sender: nil)
+    }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations  locations: [CLLocation]){
 //        let location = locations[0]
 //        
@@ -46,21 +42,16 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Start our WatchConnectivity Session
         startWatchKitSession()
-
-        
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        
         map.delegate = self
         map.showsUserLocation = true
         map.isZoomEnabled = true
         map.removeAnnotations(map.annotations)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +59,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func saved(segue:UIStoryboardSegue){
-        
-    }
-    
+    @IBAction func saved(segue:UIStoryboardSegue){}
     
     func startWatchKitSession()
     {
@@ -82,7 +70,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
             session?.activate()
         }
     }
-
 
     func updateSessionLocationDetails(location: CLLocation)
     {
@@ -106,26 +93,19 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("activationDidCompleteWith activationState:\(activationState) error:\(error)")
+        print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void)
     {
         let imageData:NSData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "defaultPic"), 0.8)! as NSData
         let value=message["Messaggio"] as! String
-        
         print("sto chiamndo l'handler lato iphone")
         print(value)
         
-        
-        
-    //    storeTranscription(letto: value!)\
-        
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate){
             /*SALVATAGGIO DEGLI ELEMENTI NEL DATABASE. VIENE DEFINITA UNA VARIABILE DI TIPO ENTITA' DEL DB (LocatioMO) e i dati vengono inseriti nei rispettivi campi */
-            
             location = LocationMO(context: appDelegate.persistentContainer.viewContext)
-       
             //location.name = (namePosition.text == "") ? "Default" : namePosition.text
             location.name = "Position \(n)"
             n = n + 1
@@ -136,7 +116,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
             print("Salvataggio Dati ....")
             appDelegate.saveContext()
             print("* * * * * * SALVATO * * * * * * \n\n")
- 
         }
     }
     
@@ -148,16 +127,17 @@ class MapViewController: UIViewController,CLLocationManagerDelegate , MKMapViewD
     }
     
     func didLocationDistanceChange(updateLocation:CLLocation) -> Bool{
-    guard let lastQueredLocation = lastFoundLocation else { return true }
-        let distance = lastQueredLocation.distance(from: updateLocation)
-    return distance>400
+        guard let lastQueredLocation = lastFoundLocation else { return true }
+            let distance = lastQueredLocation.distance(from: updateLocation)
+        return distance>400
     }
+    
     func updateWatchTrackerLocation(location:CLLocation){
         if didLocationDistanceChange(updateLocation: location) == false {return }
-        self.lastFoundLocation = location
+            self.lastFoundLocation = location
         let coordinate = location.coordinate
         addRemoveAnnotations(isAdding:true,coordinate:coordinate)
-            manager.allowDeferredLocationUpdates(untilTraveled: 400, timeout: 60)
+        manager.allowDeferredLocationUpdates(untilTraveled: 400, timeout: 60)
     }
     
     func addRemoveAnnotations(isAdding:Bool,coordinate:CLLocationCoordinate2D? = nil){
