@@ -33,6 +33,7 @@
 		CC2828D61F31B8C600033B3C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2828D51F31B8C600033B3C /* MapKit.framework */; };
 		CC2958B81F331F880001E1E9 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2958B71F331F880001E1E9 /* TutorialViewController.swift */; };
 		CCA1E3B21F30B1BD0099AAA1 /* LocationVCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA1E3B11F30B1BD0099AAA1 /* LocationVCard.swift */; };
+		D93C87411FBDD1E100001443 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93C87401FBDD1E000001443 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		CC2958B71F331F880001E1E9 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		CCA1E3B11F30B1BD0099AAA1 /* LocationVCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVCard.swift; sourceTree = "<group>"; };
 		CCA1E3E01F30B6C10099AAA1 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComplicationController.swift; path = "ComplicationController Extension/ComplicationController.swift"; sourceTree = "<group>"; };
+		D93C87401FBDD1E000001443 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 		611FA7E71F21EBFA00C7BAF9 /* ApplicationW2 */ = {
 			isa = PBXGroup;
 			children = (
+				D93C87401FBDD1E000001443 /* SettingsViewController.swift */,
 				611C120B1F29F29E00667E59 /* DetailViewController.swift */,
 				611FA7E81F21EBFA00C7BAF9 /* AppDelegate.swift */,
 				611FA7EA1F21EBFA00C7BAF9 /* ViewController.swift */,
@@ -396,6 +399,7 @@
 				611FA8341F22034F00C7BAF9 /* MapViewController.swift in Sources */,
 				CC2958B81F331F880001E1E9 /* TutorialViewController.swift in Sources */,
 				611FA7E91F21EBFA00C7BAF9 /* AppDelegate.swift in Sources */,
+				D93C87411FBDD1E100001443 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
