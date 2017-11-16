@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CA185071F322ED4009ABF84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA185061F322ED4009ABF84 /* SettingsViewController.swift */; };
 		611C120C1F29F29E00667E59 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C120B1F29F29E00667E59 /* DetailViewController.swift */; };
 		611FA7E91F21EBFA00C7BAF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FA7E81F21EBFA00C7BAF9 /* AppDelegate.swift */; };
 		611FA7EB1F21EBFA00C7BAF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FA7EA1F21EBFA00C7BAF9 /* ViewController.swift */; };
@@ -89,7 +88,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4CA185061F322ED4009ABF84 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		611C120B1F29F29E00667E59 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		611FA7E51F21EBFA00C7BAF9 /* ApplicationW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplicationW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		611FA7E81F21EBFA00C7BAF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				611FA7EA1F21EBFA00C7BAF9 /* ViewController.swift */,
 				61D437381F29D02400B6A61D /* LocationTableViewController.swift */,
 				CCA1E3B11F30B1BD0099AAA1 /* LocationVCard.swift */,
-				4CA185061F322ED4009ABF84 /* SettingsViewController.swift */,
 				611FA7EC1F21EBFA00C7BAF9 /* Main.storyboard */,
 				CC2958B71F331F880001E1E9 /* TutorialViewController.swift */,
 				61D4373A1F29D05F00B6A61D /* LocationTableViewCell.swift */,
@@ -390,7 +387,6 @@
 			files = (
 				611C120C1F29F29E00667E59 /* DetailViewController.swift in Sources */,
 				61FADE691F222D6A00A88AE1 /* NewPositionViewController.swift in Sources */,
-				4CA185071F322ED4009ABF84 /* SettingsViewController.swift in Sources */,
 				61D4373B1F29D05F00B6A61D /* LocationTableViewCell.swift in Sources */,
 				61D4373D1F29DF7200B6A61D /* Location.swift in Sources */,
 				61D437371F29CD9100B6A61D /* Location.xcdatamodeld in Sources */,
